@@ -9,11 +9,20 @@
 import UIKit
 
 class ViewController: UIViewController{
+    let emojis = ["🥳": "party", "🥰": "love", "🥺": "sad"]
+    var customMessages = [
+        
+        "party": ["woo hoo"],
+        "love": ["xoxoxo"],
+        "sad": ["feel better soon"]
+    ]
     
-
 @IBAction func showMessage(sender: UIButton) {
+     let selectedEmotion = sender.titleLabel?.text
     
-    let alertController = UIAlertController(title: "alert!", message: "message!", preferredStyle: UIAlertController.Style.alert)
+    let emojiMessage = customMessages[emojis[selectedEmotion!]!]?[0]
+    
+    let alertController = UIAlertController(title: emojis[selectedEmotion!], message: "\(emojiMessage)", preferredStyle: UIAlertController.Style.alert)
  
 alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
     present(alertController, animated: true, completion: nil)
@@ -23,7 +32,6 @@ alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
 
 }
 //test
